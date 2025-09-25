@@ -1,0 +1,88 @@
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    background-color: #000; 
+}
+
+#welcome-message h1 {
+    margin-top: -10px;
+    padding: 0;
+    font-size: 2.5rem;
+    font-family: "Audiowide", sans-serif;
+    position: relative;
+    color: azure;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+}
+
+#vbackground {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+#sign-in {
+    margin-top: 2rem;
+}
+
+#sign-in h3 {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+#sign-in label, 
+#sign-in input {
+    color: black;
+    background-color: aliceblue;
+    border-radius: 5px;
+    font-size: 1rem;
+    padding: 5px;
+}
+
+button {
+    font-size: 1.2rem;
+    background-color: aqua;
+    font-weight: bold;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* === TABLETS & DESKTOPS (768px and above) === */
+@media (min-width: 768px) {
+    #welcome-message h1 {
+        font-size: 4rem; 
+    }
+
+    #sign-in {
+        margin-top: 3rem;
+    }
+
+    #sign-in h3 {
+        font-size: 2rem;
+    }
+
+    #sign-in label, 
+    #sign-in input {
+        font-size: 1.3rem;
+    }
+
+    button {
+        font-size: 1.5rem;
+        background-color: rgba(0, 255, 255, 0.8);
+    }
+}
