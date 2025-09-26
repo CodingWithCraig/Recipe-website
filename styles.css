@@ -24,6 +24,8 @@ body {
     border-radius: 10px;
 }
 
+
+
 #vbackground {
     position: absolute;
     top: 0;
@@ -32,6 +34,10 @@ body {
     height: 100%;
     object-fit: cover;
     z-index: -1;
+}
+
+#signup {
+    display: none;
 }
 
 #sign-in {
@@ -61,6 +67,58 @@ button {
     border-radius: 5px;
     cursor: pointer;
 }
+
+
+/*Styling the main page*/
+
+
+.navigation button {
+    background-color: #00000098;
+    margin-top: 50%;
+    margin-bottom: 50%;
+    font-size: 3rem;
+    color: aliceblue;
+    border-style: dotted;
+}
+
+#view-recipes button {
+    padding: 10%;
+    background-color: rgba(165, 42, 42, 0.747);
+    border-radius: 20px;
+}
+
+#add-recipes button {
+    padding: 10%;
+    margin-top: -150px;
+    background-color: rgba(165, 42, 42, 0.747);
+    border-radius: 20px;
+}
+
+
+@media(max-width: 767px) {
+
+    #view-recipes button, #add-recipes button {
+        font-size: 1.8rem;
+
+    
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* === TABLETS & DESKTOPS (768px and above) === */
 @media (min-width: 768px) {
