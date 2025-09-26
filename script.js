@@ -8,16 +8,7 @@ import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, si
 import { getFirestore, collection, addDoc, getDocs } 
     from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js";
 
-// ---------- Firebase Config ----------
-const firebaseConfig = {
-    apiKey: "AIzaSyBPqkgBAQwhCMTUsrHcd5vct9FBNAxJQ50",
-    authDomain: "finerecip-website.firebaseapp.com",
-    projectId: "finerecip-website",
-    storageBucket: "finerecip-website.appspot.com",
-    messagingSenderId: "1081847047055",
-    appId: "1:1081847047055:web:8c60c5e2c0c6a6766aa1fa",
-    measurementId: "G-RJ77SR3CMB"
-};
+import {firebaseConfig} from './firebaseConfig.js';
 
 // ---------- Initialize Firebase ----------
 const app = initializeApp(firebaseConfig);
@@ -161,3 +152,4 @@ window.addRecipe = addRecipe;
 window.loadRecipes = loadRecipes;
 window.addRecip = addRecip;
 window.viewRecip = viewRecip;
+
