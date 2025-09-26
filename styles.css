@@ -13,6 +13,17 @@ body {
     background-color: #000; 
 }
 
+#message {
+    background-color: aliceblue;
+    color: #000;
+    border-radius: 10px;
+}
+
+#logout {
+    margin-top: -400px;
+    margin-bottom: 0px;
+}
+
 #welcome-message h1 {
     margin-top: -10px;
     padding: 0;
@@ -27,7 +38,7 @@ body {
 
 
 #vbackground {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -56,6 +67,10 @@ body {
     border-radius: 5px;
     font-size: 1rem;
     padding: 5px;
+}
+
+.navigation button:hover, #view-recipe button:hover, #add-recipe button:hover {
+    color: chocolate;
 }
 
 button {
@@ -90,6 +105,7 @@ button {
 #add-recipes button {
     padding: 10%;
     margin-top: -150px;
+    margin-bottom: 80px;
     background-color: rgba(165, 42, 42, 0.747);
     border-radius: 20px;
 }
@@ -105,8 +121,68 @@ button {
 }
 
 
+body {
+            font-family: Arial, sans-serif;
+            /* padding: 20px; */
+            /* max-width: 800px; */
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: aliceblue;
+        }
+
+        form {
+            margin-bottom: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        input, textarea {
+            padding: 10px;
+            font-size: 16px;
+            /* width: 100%; */
+        }
+
+        button {
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .recipe-card {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        .recipe-card h3 {
+            margin-top: 0;
+        }
+
+        .logout-btn {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            margin-bottom: 20px;
+        }
 
 
+
+ #recipesList, #recipesList h1 {
+    z-index: 1;
+    color: azure;
+
+    justify-content: center;
+
+    margin-bottom: 500px;
+    background-color: #000000b0;
+    border-radius: 20px;
+
+ }
 
 
 
