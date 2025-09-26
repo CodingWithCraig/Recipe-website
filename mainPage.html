@@ -18,17 +18,20 @@
         <section class="navigation">
 
             <div id="view-recipes">
-                <button>View Recipes</button>
+                <button onclick="viewRecip()" type="button">View Recipes</button>
             </div>
 
             <div id="add-recipes">
-                <button>Add Recipes</button>
+                <button onclick="addRecip()" type="button">Add Recipes</button>
             </div>
+          <button onclick="logout()" type="button" id="logout"> Log-Out</button>
+          <p id="message"></p>
+
 
 
         </section>
         
-
+       <script type="module" src="script.js" defer></script>
 
 
     </body>
