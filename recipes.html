@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adding Recipe</title>
+    <link rel="stylesheet" href="styles.css">
+
+    
+</head>
+<body>
+
+    <video autoplay muted loop id="vbackground">
+                  <source src="background2.mp4" type="video/mp4">
+                   Your browser does not support HTML5 video.
+        </video>
+
+    <h1>Adding Recipe</h1>
+
+    <button class="logout-btn" onclick="logout()">Logout</button>
+
+    <form id="recipeForm" onsubmit="event.preventDefault(); addRecipe();">
+        <input type="text" id="title" placeholder="Recipe Title">
+        <textarea id="ingredients" rows="4" placeholder="Ingredients (comma separated)"></textarea>
+        <textarea id="steps" rows="4" placeholder="Steps"></textarea>
+        <button onclick="addRecipe()" type="submit">Add Recipe</button>
+    </form>
+
+    <script type="module" src="script.js" defer></script>
+</body>
+</html>
