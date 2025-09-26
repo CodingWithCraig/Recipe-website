@@ -8,6 +8,8 @@ import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, si
 import { getFirestore, collection, addDoc, getDocs } 
     from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js";
 
+
+// ---------- Firebase Config ----------
 import {firebaseConfig} from './firebaseConfig.js';
 
 // ---------- Initialize Firebase ----------
@@ -152,4 +154,5 @@ window.addRecipe = addRecipe;
 window.loadRecipes = loadRecipes;
 window.addRecip = addRecip;
 window.viewRecip = viewRecip;
+
 
