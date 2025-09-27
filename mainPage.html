@@ -1,9 +1,15 @@
 <!DOCTYPE html>
 
 <html lang="en">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!--Cache control-->
+      <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+      <meta http-equiv="Pragma" content="no-cache">
+      <meta http-equiv="Expires" content="0">
         <title>FineRecip Main Page</title>
         <link rel="stylesheet" href="styles.css">
     </head>
@@ -17,14 +23,28 @@
 
         <section class="navigation">
 
-            <div id="view-recipes">
+          <div class="requests">
+              <p><a href="mailto:clkhlongwani2@gmail.com" id="deletion">Request Recipe Deletion</a> <br><br>
+              <a href="mailto:clkhlongwani2@gmail.com" id="feedback">Feedback</a></p>
+
+            </div>
+
+     <div class="nav-recipes">
+           <div id="view-recipes">
                 <button onclick="viewRecip()" type="button">View Recipes</button>
             </div>
 
             <div id="add-recipes">
                 <button onclick="addRecip()" type="button">Add Recipes</button>
             </div>
+          
+            
+          
+
+      </div>
+            
           <button onclick="logout()" type="button" id="logout"> Log-Out</button>
+            
           <p id="message"></p>
 
 
