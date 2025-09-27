@@ -3,6 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--Cache control-->
+      <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+      <meta http-equiv="Pragma" content="no-cache">
+      <meta http-equiv="Expires" content="0">
+
+
     <title>Adding Recipe</title>
     <link rel="stylesheet" href="styles.css">
 
@@ -17,13 +24,16 @@
 
     <h1>Adding Recipe</h1>
 
-    <button class="logout-btn" onclick="logout()">Logout</button>
+    <button class="back-button" onclick="back()">Back</button>
 
     <form id="recipeForm" onsubmit="event.preventDefault(); addRecipe();">
         <input type="text" id="title" placeholder="Recipe Title">
-        <textarea id="ingredients" rows="4" placeholder="Ingredients (comma separated)"></textarea>
+        <textarea id="ingredients" rows="4" placeholder="Ingredients (Press enter to separate)"></textarea>
         <textarea id="steps" rows="4" placeholder="Steps"></textarea>
-        <button onclick="addRecipe()" type="submit">Add Recipe</button>
+        <label for="recipeImage">Recipe Image:</label>
+        <p id="updates">More updates coming...</p>
+        <!-- <input type="file" id="recipeImage" accept="image/*" title="Upload a recipe image" placeholder="Choose an image"> -->
+        <button type="submit">Add Recipe</button>
     </form>
 
     <script type="module" src="script.js" defer></script>
