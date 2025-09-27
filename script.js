@@ -7,7 +7,8 @@ import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, si
     from "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js";
 import { getFirestore, collection, addDoc, getDocs } 
     from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js";
-
+import { getStorage, ref, uploadBytes, getDownloadURL } 
+    from "https://www.gstatic.com/firebasejs/12.3.0/firebase-storage.js";
 
 // ---------- Firebase Config ----------
 const firebaseConfig = {
@@ -25,6 +26,10 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const auth = getAuth(app);
 const db = getFirestore(app);
+const storage = getStorage(app);
+
+// ---------- STATE ----------
+let recipesLoaded = false;
 
 // ---------- LOGIN ----------
 async function login() {
@@ -65,31 +70,23 @@ function logout() {
         });
 }
 
-// ---------- ADD RECIPE ----------
-
-
+// ---------- NAVIGATION ----------
 async function addRecip() {
-    try {
-        window.location.href = "recipes.html";
-    } catch (error) {
-        document.getElementById("message").textContent = error.message;
-    }
+    window.location.href = "recipes.html";
 }
-
-// viewing recip
 async function viewRecip() {
-    try {
-        window.location.href = "viewRecipes.html";
-    } catch (error) {
-        document.getElementById("message").textContent = error.message;
-    }
+    window.location.href = "viewRecipes.html";
+}
+async function back() {
+    window.location.href = "mainPage.html";
 }
 
-
+// ---------- ADD RECIPE ----------
 async function addRecipe() {
     const title = document.getElementById("title")?.value.trim();
     const ingredients = document.getElementById("ingredients")?.value.trim();
     const steps = document.getElementById("steps")?.value.trim();
+    const imageFile = document.getElementById("recipeImage")?.files[0]; // NEW
 
     if (!title || !ingredients || !steps) {
         alert("Please fill in all fields before submitting.");
@@ -97,20 +94,35 @@ async function addRecipe() {
     }
 
     try {
+        let imageUrl = "";
+
+        // ---------- Upload Image if Provided ----------
+        if (imageFile) {
+            const storageRef = ref(storage, `recipes/${Date.now()}-${imageFile.name}`);
+            await uploadBytes(storageRef, imageFile);
+            imageUrl = await getDownloadURL(storageRef);
+        }
+
+        // ---------- Save Recipe with Image ----------
         await addDoc(collection(db, "recipes"), {
             title,
             ingredients,
             steps,
+            imageUrl,
             createdAt: new Date()
         });
 
         console.log("Recipe added!");
+        recipesLoaded = false;
         loadRecipes();
 
         // Clear input fields
         document.getElementById("title").value = "";
         document.getElementById("ingredients").value = "";
         document.getElementById("steps").value = "";
+        if (document.getElementById("recipeImage")) {
+            document.getElementById("recipeImage").value = "";
+        }
 
     } catch (error) {
         console.error("Error adding recipe:", error);
@@ -120,22 +132,38 @@ async function addRecipe() {
 
 // ---------- LOAD RECIPES ----------
 async function loadRecipes() {
+    if (recipesLoaded) return;
+    recipesLoaded = true;
+
     try {
         const querySnapshot = await getDocs(collection(db, "recipes"));
         const list = document.getElementById("recipesList");
         if (!list) return;
 
         list.innerHTML = "";
+        let html = "";
         querySnapshot.forEach(doc => {
             const data = doc.data();
-            list.innerHTML += `
+
+            const ingredientsArray = data.ingredients.split(/[,|\n]/).map(item => item.trim()).filter(item => item);
+            const stepsArray = data.steps.split(/\n/).map(item => item.trim()).filter(item => item);
+
+            const ingredientsHTML = ingredientsArray.map(ingredient => `<li>${ingredient}</li>`).join("");
+            const stepsHTML = stepsArray.map((step, i) => `<li><strong>Step ${i+1}:</strong> ${step}</li>`).join("");
+
+            html += `
                 <div class="recipe-card">
                     <h3>${data.title}</h3>
-                    <p><strong>Ingredients:</strong> ${data.ingredients}</p>
-                    <p><strong>Steps:</strong> ${data.steps}</p>
+                    ${data.imageUrl ? `<img src="${data.imageUrl}" alt="${data.title}" class="recipe-img">` : ""}
+                    <p><strong>Ingredients:</strong></p>
+                    <ul>${ingredientsHTML}</ul>
+                    <p><strong>Steps:</strong></p>
+                    <ol>${stepsHTML}</ol>
                     <hr>
                 </div>`;
         });
+
+        list.innerHTML = html;
     } catch (error) {
         console.error("Error loading recipes:", error);
     }
@@ -148,11 +176,10 @@ onAuthStateChanged(auth, user => {
     }
 });
 
-// ---------- AUTO LOAD RECIPES IF ON RECIPES PAGE ----------
+// ---------- AUTO LOAD RECIPES ----------
 if (window.location.pathname.includes("viewRecipes.html")) {
-    loadRecipes(); // this will fetch and display all recipes including ingredients
+    loadRecipes();
 }
-
 
 // ---------- Make functions available globally ----------
 window.login = login;
@@ -162,5 +189,4 @@ window.addRecipe = addRecipe;
 window.loadRecipes = loadRecipes;
 window.addRecip = addRecip;
 window.viewRecip = viewRecip;
-
-
+window.back = back;
