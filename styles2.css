@@ -1,11 +1,15 @@
 #logout {
     position:relative; /* Fixes the element relative to the viewport */
     left: 0;         /* Optional: aligns to the left edge */
-    width: 100%;     /* Makes it span the full width */
+    margin:3px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Optional: subtle shadow */
 }
 body {
     height: 100%;
+}
+
+.back-button {
+    margin-top: -400px;
 }
 
 #recipeList {
