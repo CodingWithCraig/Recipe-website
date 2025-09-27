@@ -4,6 +4,13 @@
     <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+      <!--Cache control-->
+      <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+      <meta http-equiv="Pragma" content="no-cache">
+      <meta http-equiv="Expires" content="0">
+
+
       <title>FineRecip</title>
       <link rel="stylesheet" href="styles.css">
     </head> 
@@ -21,12 +28,13 @@
                  <h1>FineRecip</h1>
             </div>
             <div id="sign-in">
-                
+      <hr>               
                 <h3>Sign-Up/Sign-In:</h3>
+                <p id="instruction"><em>If you are a first time user fill in the email and password and click on <b>Sign-UP</b></em></p>
 
                 <input type="email" id="email" name="email" placeholder="Enter your email" required>
                 <input type="password" id="password" name="password" placeholder="Enter your password" required><br><br><br>
-                
+      <hr>        
                 <button onclick="login()" type="submit">SignIn</button><br><br><button onclick="signup()" type="submit" class="signup-Path">Sign up</button>
 
 
