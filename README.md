@@ -16,7 +16,7 @@ Continuation...
 <img width="1317" height="725" alt="image" src="https://github.com/user-attachments/assets/cfe585c0-f2e9-48bb-8a9d-a5cff1821ad0" />
 Continuation...
 
-# Recipe Adding Page
+# Recipe Viewing Page
 <img width="1307" height="727" alt="image" src="https://github.com/user-attachments/assets/d6d321c2-50f4-4f5d-8d69-cbb9991dafa8" />
 <img width="1302" height="726" alt="image" src="https://github.com/user-attachments/assets/cc660ca9-24ac-40e2-99a2-6b428e934a76" />
 
